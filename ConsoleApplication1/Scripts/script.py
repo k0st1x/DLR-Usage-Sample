@@ -1,1 +1,2 @@
-﻿print(doWork(5))
+﻿s = value + ".NET"
+func(s)

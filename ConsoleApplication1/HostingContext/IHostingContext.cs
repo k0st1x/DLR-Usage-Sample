@@ -1,6 +1,9 @@
-﻿namespace ConsoleApplication1.HostingContext {
+﻿using System;
+
+namespace ConsoleApplication1.HostingContext {
     interface IHostingContext {
-        object this[string name] { get; set; }
+        void SetObject(string name, object value);
+        void SetFunction<T>(string name, Action<T> func);
         void Execute(string script);
     }
 }

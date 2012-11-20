@@ -1,1 +1,1 @@
-﻿console.log("out");
+﻿func(value + ".NET");

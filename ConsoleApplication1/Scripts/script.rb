@@ -1,1 +1,2 @@
-﻿print doWork.invoke(1)
+﻿#obj.func("#{value}.NET")
+func.invoke("#{value}.NET")

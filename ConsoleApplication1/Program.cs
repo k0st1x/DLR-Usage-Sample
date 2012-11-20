@@ -1,10 +1,12 @@
-﻿using System.IO;
+﻿using System;
+using System.Dynamic;
+using System.IO;
 using ConsoleApplication1.HostingContext;
 
 namespace ConsoleApplication1 {
     public class Program {
         public static void Main() {
-            const string ScriptSourceResourceName = "Scripts.script.js";
+            const string ScriptSourceResourceName = "Scripts.script.rb";
             var extension = Path.GetExtension(ScriptSourceResourceName);
             var context = HostingContextFactory.Create(extension);
             InitializeContext(context);
@@ -12,8 +14,25 @@ namespace ConsoleApplication1 {
             context.Execute(source);
         }
 
+        public class WrapperObject {
+            readonly Action<object> funcField;
+            public WrapperObject (Action<object> funcArg) 	{
+                funcField = funcArg;
+	        }
+
+            public void func(object obj) {
+                funcField(obj);
+            }
+        }
+
         static void InitializeContext(IHostingContext context) {
-            context["value"] = "GetDev.NET";
+            context.SetObject("value", "GetDev");
+            context.SetObject("obj", new WrapperObject(Func));
+            context.SetFunction<object>("func", Func);
+        }
+
+        static void Func(object value) {
+            Console.WriteLine(value);
         }
 
         static string GetResourceText(string resourceName) {

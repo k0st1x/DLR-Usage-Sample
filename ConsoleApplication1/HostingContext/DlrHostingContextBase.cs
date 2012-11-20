@@ -1,31 +1,26 @@
-﻿using Microsoft.Scripting.Hosting;
+﻿using System;
+using Microsoft.Scripting.Hosting;
 
 namespace ConsoleApplication1.HostingContext {
-    abstract class DlrHostingContextBase : IHostingContext {
-        ScriptEngine scriptEngine;
+    class DlrHostingContext : IHostingContext {
+        readonly ScriptEngine scriptEngine;
+        readonly ScriptScope scope;
 
-        protected abstract dynamic CreateScriptEngine();
-
-        ScriptEngine ScriptEngine {
-            get {
-                if(scriptEngine == null) {
-                    scriptEngine = CreateScriptEngine();
-                }
-                return scriptEngine;
-            }
-        }
-
-        ScriptScope Globals {
-            get { return ScriptEngine.Runtime.Globals; }
-        }
-
-        public object this[string name] {
-            get { return Globals.GetVariable(name); }
-            set { Globals.SetVariable(name, value); }
+        public DlrHostingContext(ScriptEngine scriptEngine) {
+            this.scriptEngine = scriptEngine;
+            scope = scriptEngine.CreateScope();
         }
 
         public void Execute(string script) {
-            ScriptEngine.Execute(script);
+            scriptEngine.Execute(script, scope);
+        }
+
+        public void SetObject(string name, object value) {
+            scope.SetVariable(name, value);
+        }
+
+        public void SetFunction<T>(string name, Action<T> func) {
+            SetObject(name, func);
         }
     }
 }
