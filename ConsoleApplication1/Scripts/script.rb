@@ -1,0 +1,1 @@
+﻿print doWork.invoke(1)

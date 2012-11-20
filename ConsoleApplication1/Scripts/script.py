@@ -1,0 +1,1 @@
+﻿print(doWork(5))
