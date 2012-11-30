@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PhalangerSample_SimpleScripts", "http://localhost/PhalangerSample_SimpleScripts", "{688ED1F9-3E8F-4027-86AF-7CF0C6A6EC84}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "false"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
+		Debug.AspNetCompiler.VirtualPath = "/PhalangerSample_SimpleScripts"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Program Files (x86)\Phalanger 3.0\WebRoot\Samples\SimpleScripts\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PhalangerSample_SimpleScripts\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/PhalangerSample_SimpleScripts"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\Program Files (x86)\Phalanger 3.0\WebRoot\Samples\SimpleScripts\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PhalangerSample_SimpleScripts\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\..\..\..\..\Program Files (x86)\Phalanger 3.0\WebRoot\Samples\SimpleScripts\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{688ED1F9-3E8F-4027-86AF-7CF0C6A6EC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688ED1F9-3E8F-4027-86AF-7CF0C6A6EC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
