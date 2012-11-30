@@ -8,6 +8,8 @@ namespace WpfApplication1.HostingContext {
         readonly CSharp.Context context = new CSharp.Context();
         readonly string sampleCode;
 
+        public event EventHandler BeforeExecute;
+
         public JSHostingContext(string sampleResourceName) {
             sampleCode = ResourceHelper.GetResource<JSHostingContext>(sampleResourceName);
         }
@@ -16,11 +18,18 @@ namespace WpfApplication1.HostingContext {
             context.SetGlobal(name, value);
         }
 
-        public void SetFunction<T>(string name, Action<T> func) {
+        public void SetFunction<T1, T2, T3>(string name, Action<T1, T2, T3> func) {
+            context.SetGlobal(name, Utils.CreateFunction(context.Environment, 1, func));
+        }
+
+        public void SetFunction<T1, T2, T3, t4>(string name, Action<T1, T2, T3, t4> func) {
             context.SetGlobal(name, Utils.CreateFunction(context.Environment, 1, func));
         }
 
         public void Execute(string script) {
+            if(BeforeExecute != null) {
+                BeforeExecute(this, EventArgs.Empty);
+            }
             context.Execute(script);
         }
 
@@ -29,7 +38,7 @@ namespace WpfApplication1.HostingContext {
         }
 
         public string SampleCode {
-            get { return string.Empty; }
+            get { return sampleCode; }
         }
     }
 }

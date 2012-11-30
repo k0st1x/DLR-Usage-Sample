@@ -12,9 +12,11 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Canvas Name="canvas" Background="Black" Grid.ColumnSpan="2"/>
+        <Canvas Name="canvas" Background="Black" Grid.ColumnSpan="2">
+            <!--<TextBlock Canvas.Left="100" Canvas.Top="100" Text="text" Foreground="White"/>-->
+        </Canvas>
 
-        <TextBox Text="{Binding Code}" Grid.Row="1" Margin="0,2,0,-2"/>
+        <TextBox Text="{Binding Code}" Grid.Row="1" Margin="0,2,0,-2" AcceptsReturn="True" AcceptsTab="True"/>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
             <ComboBox SelectedItem="{Binding SelectedLanguage}" ItemsSource="{Binding Languages}" Margin="5" DisplayMemberPath="Name" SelectedValuePath="Name" HorizontalContentAlignment="Center"/>

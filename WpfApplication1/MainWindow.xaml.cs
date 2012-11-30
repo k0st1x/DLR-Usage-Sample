@@ -1,9 +1,13 @@
 ﻿using System.Windows;
+using WpfApplication1.HostingContext;
+
 namespace WpfApplication1 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            DataContext = new MainPageViewModel(canvas);
+            var configurer = new HostingContextConfigurer(canvas);
+            var hostingContexts = HostingContextFactory.CreateHostingContexts(configurer);
+            DataContext = new MainPageViewModel(hostingContexts);
         }
     }
 }

@@ -10,6 +10,8 @@ namespace WpfApplication1.HostingContext {
         readonly ScriptEngine scriptEngine;
         readonly ScriptScope scope;
 
+        public event EventHandler BeforeExecute;
+
         public DlrHostingContext(ScriptEngine scriptEngine, string sampleResourceName) {
             this.scriptEngine = scriptEngine;
 
@@ -20,14 +22,25 @@ namespace WpfApplication1.HostingContext {
         }
 
         public void Execute(string script) {
-            scriptEngine.Execute(script, scope);
+            if(BeforeExecute != null) {
+                BeforeExecute(this, EventArgs.Empty);
+            }
+
+            //scriptEngine.Execute(script, scope);
+            var scriptSource = scriptEngine.CreateScriptSourceFromString(script);
+            var compiledCode = scriptSource.Compile();
+            compiledCode.Execute(scope);
         }
 
         public void SetObject(string name, object value) {
             scope.SetVariable(name, value);
         }
 
-        public void SetFunction<T>(string name, Action<T> func) {
+        public void SetFunction<T1, T2, T3>(string name, Action<T1, T2, T3> func) {
+            SetObject(name, func);
+        }
+
+        public void SetFunction<T1, T2, T3, t4>(string name, Action<T1, T2, T3, t4> func) {
             SetObject(name, func);
         }
 

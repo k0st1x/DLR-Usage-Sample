@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Helpers\ResourceHelper.cs" />
     <Compile Include="HostingContext\DlrHostingContext.cs" />
+    <Compile Include="HostingContext\HostingContextConfigurer.cs" />
     <Compile Include="HostingContext\HostingContextFactory.cs" />
     <Compile Include="HostingContext\IHostingContext.cs" />
     <Compile Include="HostingContext\JSHostingContext.cs" />

@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WpfApplication1.HostingContext;
 
 namespace WpfApplication1 {
     class MainPageViewModel : INotifyPropertyChanged {
-        readonly IEnumerable<IHostingContext> hostingContexts = HostingContextFactory.CreateHostingContexts();
+        readonly IEnumerable<IHostingContext> hostingContexts;
         IHostingContext selectedLanguage;
-        string code;
+        string code = string.Empty;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -34,7 +36,8 @@ namespace WpfApplication1 {
             get { return hostingContexts; }
         }
 
-        public MainPageViewModel(Canvas canvas) {
+        public MainPageViewModel(IEnumerable<IHostingContext> hostingContexts) {
+            this.hostingContexts = hostingContexts;
             selectedLanguage = hostingContexts.FirstOrDefault();
             PasteSampleCommand = new DelegateCommand(PasteSample);
             ExecuteCommand = new DelegateCommand(Execute);
@@ -48,7 +51,11 @@ namespace WpfApplication1 {
         }
 
         void Execute() {
-            selectedLanguage.Execute(Code);
+            try {
+                selectedLanguage.Execute(Code);
+            } catch(Exception e) {
+                MessageBox.Show(e.ToString());
+            }
         }
 
         void RaisepropertyChanged([CallerMemberName] string propertyName = "") {

@@ -1,1 +1,8 @@
-﻿func(value + ".NET");
+﻿(function () {
+    text(0, 0, "ironjs");
+
+    line(100, 20, 150, 25);
+    ellipse(200, 50, 20, 40);
+    rect(200, 20, 250, 40);
+    text(100, 50, "Hello GetDev.NET");
+})();
