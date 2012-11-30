@@ -1,6 +1,6 @@
 ﻿g.text 0, 0, "ironruby"
 
-g.line 100, 20, 150, 25
-g.ellipse 200, 50, 20, 40
-g.rect 200, 20, 250, 40
-g.text 100, 50, "Hello GetDev.NET"
+g.line 300, 70, 500, 120
+g.ellipse 600, 170, 70, 130
+g.rect 600, 170, 800, 250
+g.text 300, 170, "Hello GetDev.NET"
