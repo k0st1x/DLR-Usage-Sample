@@ -1,0 +1,1 @@
+ipy C:\Programs\IronPython\Tools\Scripts\pyc.py /target:winexe /standalone /main:wfdemo.py wfdemo.py
